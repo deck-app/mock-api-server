@@ -17,7 +17,7 @@ if [[ "$(ls -A "/src/")" ]] ;
     then
         echo "Directory is not Empty, Please deleted hiden file and directory"
     else
-        git clone https://deck-app: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@github.com/deck-app/mock-api.git .
+        git clone https://github.com/deck-app/mock-api.git .
         npm install -g nodemon && npm install
 fi
 exec "$@"

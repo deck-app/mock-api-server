@@ -1,6 +1,8 @@
 name: Mock API Server
 
 on:
+  schedule:
+  - cron:  '30 5,17 * * *'
   push:
     branches: [ master ]
   pull_request:
