@@ -26,6 +26,7 @@ jobs:
         docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
+        sleep 30s
         curl -i http://localhost:3000/v1/users 
     - name: Destroy container and file
       run:  |
@@ -44,6 +45,7 @@ jobs:
         docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
+        sleep 30s
         curl -i http://localhost:3000/v1/users 
     - name: Destroy container and file
       run:  |
@@ -61,6 +63,7 @@ jobs:
         docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
+        sleep 30s
         curl -i http://localhost:3000/v1/users 
     - name: Destroy container and file
       run:  |
@@ -78,6 +81,7 @@ jobs:
         docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
+        sleep 30s
         curl -i http://localhost:3000/v1/users 
     - name: Destroy container and file
       run:  |
@@ -95,6 +99,7 @@ jobs:
         docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
+        sleep 30s
         curl -i http://localhost:3000/v1/users 
     - name: Destroy container and file
       run:  |
