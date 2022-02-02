@@ -37,16 +37,14 @@ jobs:
 
     
     - name: Build the Docker image Nodejs 12
-      run: docker-compose build
+      run: docker-compose -f "docker-compose.yml" up -d --build
       env:
         NODEJS_VERSION: 12
         APP_CODE_PATH_HOST: /tmp/app/
-    - name: Docker container chck
-      run:  docker-compose ps
-    # - name: NPM version check
-      # run:  |
-      #   docker exec mock-api-server_nodejs_1 node -v
-      #   docker exec mock-api-server_nodejs_1 npm -v
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -57,16 +55,14 @@ jobs:
         sudo rm -rf /tmp/app/
 
     - name: Build the Docker image Nodejs 13
-      run: docker-compose build
+      run: docker-compose -f "docker-compose.yml" up -d --build
       env:
         NODEJS_VERSION: 13
         APP_CODE_PATH_HOST: /tmp/app/
-    - name: Docker container chck
-      run:  docker-compose ps
-    # - name: NPM version check
-    #   run:  |
-    #     docker exec mock-api-server_nodejs_1 node -v
-    #     docker exec mock-api-server_nodejs_1 npm -v
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -77,16 +73,14 @@ jobs:
         sudo rm -rf /tmp/app/
     
     - name: Build the Docker image Nodejs 14
-      run: docker-compose build
+      run: docker-compose -f "docker-compose.yml" up -d --build
       env:
         NODEJS_VERSION: 14
         APP_CODE_PATH_HOST: /tmp/app/
-    - name: Docker container chck
-      run:  docker-compose ps
-    # - name: NPM version check
-    #   run:  |
-    #     docker exec mock-api-server_nodejs_1 node -v
-    #     docker exec mock-api-server_nodejs_1 npm -v
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -97,16 +91,14 @@ jobs:
         sudo rm -rf /tmp/app/
     
     - name: Build the Docker image Nodejs 16
-      run: docker-compose build
+      run: docker-compose -f "docker-compose.yml" up -d --build
       env:
         NODEJS_VERSION: 16
         APP_CODE_PATH_HOST: /tmp/app/
-    - name: Docker container chck
-      run:  docker-compose ps
-    # - name: NPM version check
-    #   run:  |
-    #     docker exec mock-api-server_nodejs_1 node -v
-    #     docker exec mock-api-server_nodejs_1 npm -v
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
