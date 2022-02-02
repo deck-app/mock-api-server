@@ -1,0 +1,102 @@
+name: Mock API Server
+
+on:
+  schedule:
+  - cron:  '30 5,17 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Nodejs 10
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      env:
+        NODEJS_VERSION: 10
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
+
+    
+    - name: Build the Docker image Nodejs 12
+      run: docker-compose build
+      env:
+        NODEJS_VERSION: 12
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
+
+    - name: Build the Docker image Nodejs 13
+      run: docker-compose build
+      env:
+        NODEJS_VERSION: 13
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
+    
+    - name: Build the Docker image Nodejs 14
+      run: docker-compose build
+      env:
+        NODEJS_VERSION: 14
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
+    
+    - name: Build the Docker image Nodejs 16
+      run: docker-compose build
+      env:
+        NODEJS_VERSION: 16
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
