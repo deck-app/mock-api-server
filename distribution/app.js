@@ -28,6 +28,7 @@ router.route("/").all(function (req, res) {
         apis.push("/v1/" + _.replace(file, ".json", ""));
       });
 
+      res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Content-Type", "application/json");
       res.end(
         JSON.stringify({
@@ -74,12 +75,14 @@ function getResponse(req, res) {
           if (searchString) {
             let result = body.find((t) => t.id == searchString);
             if (result) {
+              res.setHeader("Access-Control-Allow-Origin", "*");
               res.setHeader("Content-Type", "application/json");
               res.end(JSON.stringify(result));
             } else {
               printError(res, "Record not found!");
             }
           } else {
+            res.setHeader("Access-Control-Allow-Origin", "*");
             res.setHeader("Content-Type", "application/json");
             res.end(JSON.stringify(body));
           }
@@ -104,6 +107,7 @@ function getResponse(req, res) {
  * @param {*} errorMessage
  */
 function printError(res, errorMessage) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify({ message: errorMessage, code: 2 }));
 }
