@@ -9,9 +9,7 @@ on:
     branches: [ master ]
 
 jobs:
-
-  build:
-
+  Mock-API-Node10-AMD64
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -34,6 +32,7 @@ jobs:
       run:  |
         docker-compose down
         sudo rm -rf /tmp/app/
+        echo "y" | docker image prune -a
 
     
     - name: Build the Docker image Nodejs 12
