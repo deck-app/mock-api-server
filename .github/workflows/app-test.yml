@@ -42,8 +42,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mockapiserver_nodejs_1 node -v
-        docker exec mockapiserver_nodejs_1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -51,7 +51,7 @@ jobs:
     - name: Destroy container and file
       run:  |
         docker-compose down
-        echo "password" | sudo -S whoami
+        echo "abcd@1234" | sudo -S whoami
         sudo rm -rf /tmp/app/
         echo "y" | docker image prune -a
 
@@ -88,8 +88,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mockapiserver_nodejs_1 node -v
-        docker exec mockapiserver_nodejs_1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -134,8 +134,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mockapiserver_nodejs_1 node -v
-        docker exec mockapiserver_nodejs_1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -180,8 +180,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mockapiserver_nodejs_1 node -v
-        docker exec mockapiserver_nodejs_1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -226,8 +226,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mockapiserver_nodejs_1 node -v
-        docker exec mockapiserver_nodejs_1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
