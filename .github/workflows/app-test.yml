@@ -51,9 +51,12 @@ jobs:
     - name: Destroy container and file
       run:  |
         docker-compose down
+        while [ -d /tmp/app ]; do
         echo "password" | sudo -S whoami
         sudo rm -rf /tmp/app/
+        done
         echo "y" | docker image prune -a
+        echo "y" | docker volume prune
 
   Mock-API-Node12-AMD64:
     runs-on: ubuntu-latest
@@ -97,9 +100,12 @@ jobs:
     - name: Destroy container and file
       run:  |
         docker-compose down
+        while [ -d /tmp/app ]; do
         echo "password" | sudo -S whoami
         sudo rm -rf /tmp/app/
+        done
         echo "y" | docker image prune -a
+        echo "y" | docker volume prune
 
   Mock-API-Node13-AMD64:
     runs-on: ubuntu-latest
@@ -143,9 +149,12 @@ jobs:
     - name: Destroy container and file
       run:  |
         docker-compose down
+        while [ -d /tmp/app ]; do
         echo "password" | sudo -S whoami
         sudo rm -rf /tmp/app/
+        done
         echo "y" | docker image prune -a
+        echo "y" | docker volume prune
 
   Mock-API-Node14-AMD64:
     runs-on: ubuntu-latest
@@ -189,9 +198,12 @@ jobs:
     - name: Destroy container and file
       run:  |
         docker-compose down
+        while [ -d /tmp/app ]; do
         echo "password" | sudo -S whoami
         sudo rm -rf /tmp/app/
+        done
         echo "y" | docker image prune -a
+        echo "y" | docker volume prune
 
   Mock-API-Node16-AMD64:
     runs-on: ubuntu-latest
@@ -235,6 +247,9 @@ jobs:
     - name: Destroy container and file
       run:  |
         docker-compose down
+        while [ -d /tmp/app ]; do
         echo "password" | sudo -S whoami
         sudo rm -rf /tmp/app/
+        done
         echo "y" | docker image prune -a
+        echo "y" | docker volume prune
