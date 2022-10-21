@@ -42,8 +42,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mock-api-server-nodejs-1 node -v
-        docker exec mock-api-server-nodejs-1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -91,8 +91,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mock-api-server-nodejs-1 node -v
-        docker exec mock-api-server-nodejs-1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -140,8 +140,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mock-api-server-nodejs-1 node -v
-        docker exec mock-api-server-nodejs-1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -189,8 +189,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mock-api-server-nodejs-1 node -v
-        docker exec mock-api-server-nodejs-1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
@@ -238,8 +238,8 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/app/
     - name: Node and NPM version check
       run:  |
-        docker exec mock-api-server-nodejs-1 node -v
-        docker exec mock-api-server-nodejs-1 npm -v
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
     - name: API checking
       run:  |
         sleep 30s
