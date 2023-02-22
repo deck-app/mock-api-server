@@ -252,3 +252,149 @@ jobs:
         echo "password" | sudo -S whoami
         sudo rm -rf /tmp/app/
         done
+
+  Mock-API-Node17-AMD64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Nodejs 17
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      env:
+        NODEJS_VERSION: 17
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: Node and NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        sleep 30s
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
+        echo "y" | docker image prune -a
+  Mock-API-Node17-ARM64:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Nodejs 17
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      env:
+        NODEJS_VERSION: 17
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: Node and NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        sleep 30s
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        echo "y" | docker system prune -a
+        while [ -d /tmp/app ]; do
+        echo "password" | sudo -S whoami
+        sudo rm -rf /tmp/app/
+        done
+
+
+  Mock-API-Node18-AMD64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Nodejs 18
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      env:
+        NODEJS_VERSION: 18
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: Node and NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        sleep 30s
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
+        echo "y" | docker image prune -a
+  Mock-API-Node18-ARM64:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Nodejs 18
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      env:
+        NODEJS_VERSION: 18
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: Node and NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        sleep 30s
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        echo "y" | docker system prune -a
+        while [ -d /tmp/app ]; do
+        echo "password" | sudo -S whoami
+        sudo rm -rf /tmp/app/
+        done
+
+
+  Mock-API-Node19-AMD64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Nodejs 19
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      env:
+        NODEJS_VERSION: 19
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: Node and NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        sleep 30s
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        sudo rm -rf /tmp/app/
+        echo "y" | docker image prune -a
+  Mock-API-Node19-ARM64:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Nodejs 19
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      env:
+        NODEJS_VERSION: 19
+        APP_CODE_PATH_HOST: /tmp/app/
+    - name: Node and NPM version check
+      run:  |
+        docker exec mock-api-server_nodejs_1 node -v
+        docker exec mock-api-server_nodejs_1 npm -v
+    - name: API checking
+      run:  |
+        sleep 30s
+        curl -i http://localhost:3000/v1/users 
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        echo "y" | docker system prune -a
+        while [ -d /tmp/app ]; do
+        echo "password" | sudo -S whoami
+        sudo rm -rf /tmp/app/
+        done
