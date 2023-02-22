@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+chown -R node:node /src/
 cd /src/
 if [[ -f "/src/package.json" ]] ;
 then
