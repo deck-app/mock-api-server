@@ -1,0 +1,96 @@
+name: Mock API Server
+
+on:
+  schedule:
+  - cron:  '00 20 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Mock-API-Node-AMD64:
+    strategy:
+      matrix:
+        nv: ["14", "16", "17", "18", "19"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image Nodejs ${{ matrix.nv }}
+        run: docker-compose -f "docker-compose.yml" up -d --build
+        env:
+          NODEJS_VERSION: ${{ matrix.nv }}
+          APP_CODE_PATH_HOST: /tmp/app/
+      - name: Node and NPM version check
+        run:  |
+          docker exec mock-api-server_nodejs_1 node -v
+          docker exec mock-api-server_nodejs_1 npm -v
+      - name: API checking
+        run:  |
+          sleep 30s
+          curl -i http://localhost:3000/v1/users 
+      - name: Destroy container and file
+        run:  |
+          docker-compose down
+          sudo rm -rf /tmp/app/
+          echo "y" | docker image prune -a
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: github_action_status
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Post Content Mock API SERVER Node ${{ matrix.nv }} AMD64 :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: rtCamp
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  Mock-API-Node-ARM64:
+    strategy:
+      matrix:
+        nv: ["14", "16", "17", "18", "19"]
+    runs-on: ubuntu-22.04
+    name: Mock-API-Node-ARM64
+    steps:
+      - uses: actions/checkout@v4
+      - uses: uraimo/run-on-arch-action@v2
+        name: Run commands
+        id: runcmd
+        with:
+          arch: aarch64
+          distro: ubuntu22.04
+          run: |
+            uname -a
+            echo ::set-output name=uname::$(uname -a)
+      - name: Get the output
+        run: |
+          echo "The uname output was ${{ steps.runcmd.outputs.uname }}"
+      - name: Build the Docker image Nodejs ${{ matrix.nv }}
+        run: docker-compose -f "docker-compose.yml" up -d --build
+        env:
+          NODEJS_VERSION: ${{ matrix.nv }}
+          APP_CODE_PATH_HOST: /tmp/app/
+      - name: Node and NPM version check
+        run:  |
+          docker exec mock-api-server_nodejs_1 node -v
+          docker exec mock-api-server_nodejs_1 npm -v
+      - name: API checking
+        run:  |
+          sleep 30s
+          curl -i http://localhost:3000/v1/users 
+      - name: Destroy container and file
+        run:  |
+          docker-compose down
+          sudo rm -rf /tmp/app/
+          echo "y" | docker image prune -a
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: github_action_status
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Post Content Mock API SERVER Node ${{ matrix.nv }} ARM64 :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: rtCamp
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
